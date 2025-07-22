@@ -1,5 +1,5 @@
 
-## NucleiMix (Beta)
+## NucleiMix
 ## Realistic Data Augmentation for Nuclei Instance Segmentation
 
 [Journal Link](https://arxiv.org/pdf/2410.16671?)
@@ -69,7 +69,7 @@ post_process
 The `pre_inpaint/` directory contains the augmented images and masks in the original size without inpainting, to 
 use a pretrained diffusion model (256x256), we generate crops in the `crops_to_inpaint` directory.
 
-#### 3. Inpaint
+#### 3. Inpaint (Beta)
 We used [MCG](https://github.com/hyungjin-chung/MCG_diffusion) inpainting method. Please download the [pretrained weight](https://drive.google.com/drive/folders/1DPRqsIRjJupCdb3_4H2u7jz4J1565TDz?usp=sharing).
 
 #### 4. Merge the inpainted crops back to the original images
