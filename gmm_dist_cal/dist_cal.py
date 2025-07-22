@@ -1,5 +1,7 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import skimage
 import random
 import pickle
@@ -14,6 +16,10 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
 import seaborn as sns
+from element import process_nuclei_patches, process_void_patches
+from gmm_dist_cal.TransPath.ctran import ctranspath
+from torchvision import transforms
+import torch.nn as nn
 
 
 def check_manual_seed(seed):
@@ -64,14 +70,10 @@ if __name__ == "__main__":
     # dataset = "monusac"
 
     check_manual_seed(888)
-    from element import process_nuclei_patches, process_void_patches
-    from TransPath.ctran import ctranspath
-    from torchvision import transforms
-    import torch.nn as nn
     model = ctranspath()
     model.cuda()
     model.head = nn.Identity()
-    td = torch.load(r'./TransPath_main/ctranspath.pth')
+    td = torch.load(r'./TransPath/ctranspath.pth')
     model.load_state_dict(td['model'], strict=True)
     model.eval()
     mean = (0.485, 0.456, 0.406)

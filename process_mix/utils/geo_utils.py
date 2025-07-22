@@ -1,10 +1,6 @@
-import random
 import cv2
 import cv2 as cv
-import math
 import numpy as np
-import matplotlib.pyplot as plt
-import skimage.io
 from scipy.ndimage.morphology import binary_dilation
 
 
